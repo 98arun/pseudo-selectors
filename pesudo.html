@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>precedence, override vs global css & pseudo selectors in css</title>
+  </head>
+  <body>
+    <style>
+      /* this way we use internal css. internal css has more periority the external css */
+      * {
+        color: chocolate;
+        text-align: center;
+      }
+      h1,
+      p {
+        text-align: center;
+        color: cornflowerblue !important; /* when we use important attribute then its periority is high and it override the inline css */
+      }
+      /* unvisited link */
+      a.one:link {
+        color: red;
+      }
+
+      /* visited link */
+      a.one:visited {
+        color: green;
+      }
+
+      /* mouse over link */
+      a.one:hover {
+        color: hotpink;
+        cursor: pointer;
+      }
+
+      /* selected link */
+      a.one:active {
+        color: yellow;
+      }
+
+      a.two:link {
+        color: #ff0000;
+      }
+      a.two:visited {
+        color: #0000ff;
+      }
+      a.two:hover {
+        font-size: 150%;
+        color: #ffcc00;
+        background: #66ff66;
+        font-family: monospace;
+        cursor: progress;
+      }
+    </style>
+    <h1>precedence in css</h1>
+    <p>this ia a paragraph</p>
+    <!--* this is inline css. inline css has high periority-->
+    <p style="text-align: center; color: brown">
+      we have a paragraph tag. in this tag we check the priority of css.
+    </p>
+    <a class="one" href="www.google.com" target="_blank">google link</a>
+    <a class="two" href="www.youtybe.com" target="_self">Youtube link</a>
+    <style>
+      div > h1 {
+        color: darkblue !important;
+      }
+      p::first-letter {
+        background-color: yellowgreen;
+        color: royalblue;
+        font-size: 50px;
+      }
+      div::first-line {
+        font-size: 20px;
+        font-family: cursive;
+      }
+      p::first-line {
+        color: red;
+        font-variant: small-caps;
+      }
+      ::selection {
+        /* when we select the text then the color of text is voilet and background color is yellow*/
+        color: violet;
+        background: yellow;
+      }
+      ::marker {
+        /*this marker tag is use to target the list-style-type dots and numbers*/
+        color: grey;
+        font-size: 25px;
+      }
+      .ol {
+        display: inline-block;
+        text-align: left;
+      }
+    </style>
+    <ul class="ol">
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+
+    <ol class="ol">
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+    </ol>
+    <div>
+      <h1>pseudo selector</h1>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates,
+        nacta quam tenetur dolorum atque totam ab nobis, animi unde quaerat cum
+        tempora.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates,
+        nacta quam tenetur dolorum atque totam ab nobis, animi unde quaerat cum
+        tempora.
+      </p>
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius eum,
+        debitis molestias, delta ut aspeonsequae dolorem voluptate maxime
+        accusamus?
+      </div>
+      <br />
+      <small
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, am
+        aspernatur doloremque repellat nihil, quisquam ex earum quae atque
+        nobis!</small
+      >
+      <small
+        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, am
+        aspernatur doloremque repellat nihil, quisquam ex earum quae atque
+        nobis!</small
+      >
+    </div>
+  </body>
+</html>
